@@ -69,3 +69,9 @@ the relay also serves Qwen, GLM, Kimi, MiniMax and Doubao.
   result can be compared line by line.
 
 Maintained by NovAI (operator of aiapi-pro.com). Affiliation disclosed deliberately.
+
+## Where this is linked from
+
+- Write-up with the reasoning and the exact failure mode this protocol avoids:
+  https://aiapi-pro.com/blog/is-my-llm-api-relay-downgrading-the-model
+- The trust page it backs: https://aiapi-pro.com/provenance.html

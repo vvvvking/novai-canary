@@ -1,0 +1,158 @@
+{
+  "date": "2026-11-07",
+  "repeats": 3,
+  "relay": "https://aiapi-pro.com/v1",
+  "reference": "https://open.bigmodel.cn/api/paas/v4",
+  "routes": [
+    {
+      "model": "glm-5.3",
+      "rows": [
+        {
+          "probe": "echo_json",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "primes",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "arith",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "exact_ok",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "list_len",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "json_keys",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        }
+      ],
+      "totals": {
+        "relay": 18,
+        "ref": 18
+      },
+      "prompt_tokens": {
+        "relay": 93,
+        "ref": 93
+      },
+      "flags": []
+    },
+    {
+      "model": "glm-5.2",
+      "rows": [
+        {
+          "probe": "echo_json",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "primes",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "arith",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "exact_ok",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "list_len",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "json_keys",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        }
+      ],
+      "totals": {
+        "relay": 18,
+        "ref": 18
+      },
+      "prompt_tokens": {
+        "relay": 93,
+        "ref": 93
+      },
+      "flags": []
+    },
+    {
+      "model": "glm-5",
+      "rows": [
+        {
+          "probe": "echo_json",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "primes",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "arith",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "exact_ok",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "list_len",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        },
+        {
+          "probe": "json_keys",
+          "relay": 3,
+          "ref": 3,
+          "flag": false
+        }
+      ],
+      "totals": {
+        "relay": 18,
+        "ref": 18
+      },
+      "prompt_tokens": {
+        "relay": 93,
+        "ref": 93
+      },
+      "flags": []
+    }
+  ]
+}

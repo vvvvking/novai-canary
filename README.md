@@ -19,29 +19,40 @@ It does not answer billing accuracy, privacy, or uptime.
 - A tokenizer fingerprint is taken separately: the same 360-character prompt must yield the
   same `prompt_tokens` on both endpoints.
 
-## Results — 2026-11-05
+## Results — 2026-11-05 and 2026-11-07
 
-| probe | relay | reference | downgrade |
-| --- | --- | --- | --- |
-| echo_json | 3/3 | 3/3 | no |
-| primes | 3/3 | 3/3 | no |
-| arith (17*23) | 3/3 | 3/3 | no |
-| count_r ("strawberry") | 1/3 | 0/3 | no |
-| exact_ok | 3/3 | 3/3 | no |
-| list_len | 3/3 | 3/3 | no |
-| json_keys | 3/3 | 3/3 | no |
+Four routes, two providers, 7 probes each, `temperature: 0`, deterministic grading.
 
-```
-prompt_tokens: relay=164  reference=164  skew=0
-downgrade_flags: []
-verdict: OK — no probe passed on the reference while failing on the relay
-```
+| route | reference | relay | official | flags |
+| --- | --- | --- | --- | --- |
+| `deepseek-v4-pro` | api.deepseek.com | 18/18 | 18/18 | none |
+| `glm-5.3` | open.bigmodel.cn | 18/18 | 18/18 | none |
+| `glm-5.2` | open.bigmodel.cn | 18/18 | 18/18 | none |
+| `glm-5` | open.bigmodel.cn | 18/18 | 18/18 | none |
 
-`count_r` is the interesting row: **both** endpoints fail it most of the time — the classic
-"how many r in strawberry" weakness. The relay scored 1/3 and the reference 0/3, so this row
-carries no signal about fidelity in either direction.
+Tokenizer fingerprint (`prompt_tokens` for the same 360-character prompt):
 
-Raw output: [`results-2026-11-05.json`](results-2026-11-05.json). Script: [`canary.py`](canary.py).
+| route | relay | official |
+| --- | --- | --- |
+| `deepseek-v4-pro` | 164 | 164 |
+| `glm-5.3` | 93 | 93 |
+| `glm-5.2` | 93 | 93 |
+| `glm-5` | 93 | 93 |
+
+Raw output: [`results-2026-11-07.json`](results-2026-11-07.json), [`results-2026-11-05.json`](results-2026-11-05.json).
+
+### What the first attempt got wrong
+
+The 2026-11-05 run on GLM produced an apparent downgrade flag on `glm-5.3` — relay 1/3 vs reference 2/3 on one probe.
+It was noise, and the totals were identical (15/18 both sides). The cause was grading, not the relay: the probes
+demanded a bare JSON array while those models return fenced Markdown, so **both** sides failed most rows and any
+single lucky pass looked like a difference.
+
+Fix: strip ```` ``` ```` fences and `<think>` blocks before grading, raise `max_tokens` so reasoning models can
+finish, and use 3 repeats. After that all three GLM routes matched the reference exactly.
+
+That episode is the reason this repo grades per probe instead of averaging similarity — and the reason a flag is
+worth exactly nothing until it reproduces.
 
 ## How to reproduce independently
 

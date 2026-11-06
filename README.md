@@ -23,12 +23,16 @@ It does not answer billing accuracy, privacy, or uptime.
 
 Four routes, two providers, 7 probes each, `temperature: 0`, deterministic grading.
 
-| route | reference | relay | official | flags |
-| --- | --- | --- | --- | --- |
-| `deepseek-v4-pro` | api.deepseek.com | 18/18 | 18/18 | none |
-| `glm-5.3` | open.bigmodel.cn | 18/18 | 18/18 | none |
-| `glm-5.2` | open.bigmodel.cn | 18/18 | 18/18 | none |
-| `glm-5` | open.bigmodel.cn | 18/18 | 18/18 | none |
+| route | run date | reference | relay | official | flags |
+| --- | --- | --- | --- | --- | --- |
+| `deepseek-v4-pro` | 2026-11-05 | api.deepseek.com | 18/18 (6 probes × 3) | 18/18 | none |
+| `glm-5.3` | 2026-11-07 | open.bigmodel.cn | 18/18 (6 probes × 3) | 18/18 | none |
+| `glm-5.2` | 2026-11-07 | open.bigmodel.cn | 18/18 (6 probes × 3) | 18/18 | none |
+| `glm-5` | 2026-11-07 | open.bigmodel.cn | 18/18 (6 probes × 3) | 18/18 | none |
+
+The 2026-11-05 DeepSeek run carried a seventh probe (letter counting in "strawberry") that was dropped from the
+count above because **both** endpoints fail it — relay 1/3, official 0/3. It is a model weakness, not a fidelity
+signal, and including it in a percentage would misrepresent the comparison.
 
 Tokenizer fingerprint (`prompt_tokens` for the same 360-character prompt):
 

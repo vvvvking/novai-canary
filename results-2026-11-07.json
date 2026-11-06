@@ -154,5 +154,6 @@
       },
       "flags": []
     }
-  ]
+  ],
+  "scope": "GLM routes only. The deepseek-v4-pro route was measured on 2026-11-05 and lives in results-2026-11-05.json"
 }
